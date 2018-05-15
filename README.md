@@ -4,8 +4,9 @@
 
 DialogFragment Wrapper,Chained call and simple, fast use.
 ### 项目说明
-- 对 DialogFragment 常用的 API 进行封装，使用简单、定制样式简单
+- 对 DialogFragment 常用的 API 进行封装，使用简单、定制样式简单、扩展性强
 - 链式调用，使用起来如丝般顺畅
+- 支持屏幕旋转或者其他情况下重建的属性状态的保存
 
 
 ### 仓库依赖
