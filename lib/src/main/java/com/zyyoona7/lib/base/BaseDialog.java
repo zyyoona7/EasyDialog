@@ -2,7 +2,6 @@ package com.zyyoona7.lib.base;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
@@ -51,8 +50,6 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
     protected int mSoftInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
 
     protected int mGravity = Gravity.CENTER;
-
-    protected Drawable mBackgroundDrawable;
 
     protected FragmentActivity mActivity;
 
@@ -142,10 +139,6 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
      * @param layoutParams
      */
     protected void initWindowLayoutParams(Window window, WindowManager.LayoutParams layoutParams) {
-        if (mBackgroundDrawable != null) {
-            window.setBackgroundDrawable(mBackgroundDrawable);
-        }
-
         if (mIsKeyboardEnable) {
             window.setSoftInputMode(mSoftInputMode);
         }
@@ -301,17 +294,6 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
      */
     public T setGravity(int gravity) {
         this.mGravity = gravity;
-        return self();
-    }
-
-    /**
-     * 设置 Window Background
-     *
-     * @param drawable
-     * @return
-     */
-    public T setWindowBackground(Drawable drawable) {
-        this.mBackgroundDrawable = drawable;
         return self();
     }
 

@@ -1,4 +1,4 @@
-package com.zyyoona7.lib.other;
+package com.zyyoona7.lib.impl;
 
 import android.support.v7.app.AlertDialog;
 
