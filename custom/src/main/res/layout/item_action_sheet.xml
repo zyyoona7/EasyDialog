@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatTextView
+    android:id="@+id/tv_action_sheet_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_action_sheet_item_height"
+    android:background="@drawable/selector_alert_press"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="item"
+    android:textColor="@color/color_ios_text_blue"
+    android:textSize="@dimen/dimen_action_sheet_item_text_size"/>

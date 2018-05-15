@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:background="#000000"
+    android:paddingBottom="@dimen/dimen_action_sheet_cancel_margin"
+    >
+
+    <com.gcssloop.widget.RCRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:clip_background="true"
+        app:round_corner="@dimen/dimen_action_sheet_corner">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_action_sheet_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@color/color_ios_action_sheet_text"
+                android:textSize="@dimen/dimen_action_sheet_title_msg_text_size"
+                android:visibility="gone"
+                tools:text="Title"
+                tools:visibility="visible"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_action_sheet_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="@color/color_ios_action_sheet_text"
+                android:textSize="@dimen/dimen_action_sheet_title_msg_text_size"
+                android:visibility="gone"
+                tools:text="this is a message"
+                tools:visibility="visible"
+                />
+
+            <View
+                android:id="@+id/v_action_sheet_title_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_divider_height"
+                android:background="@color/color_ios_divider"
+                android:visibility="gone"
+                tools:visibility="visible"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_action_sheet_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
+        </LinearLayout>
+    </com.gcssloop.widget.RCRelativeLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_action_sheet_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_action_sheet_item_height"
+        android:layout_marginTop="@dimen/dimen_action_sheet_cancel_margin"
+        android:background="@drawable/selector_action_sheet_press"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/color_ios_text_blue"
+        android:textSize="@dimen/dimen_action_sheet_item_text_size"/>
+</LinearLayout>

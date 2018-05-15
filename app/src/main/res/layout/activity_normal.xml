@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".normal.NormalActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="通用选项"
+            android:textSize="16sp"
+            />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="弹出位置"
+            android:textSize="14sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_base_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="顶部"/>
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_base_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="中间"/>
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_base_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="底部"/>
+        </RadioGroup>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="其他"
+            android:textSize="14sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cb_other_transparent_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="背景透明"/>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cb_other_full_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x轴全屏"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="#bbbbbb"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="确认弹窗"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cb_confirm_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="带标题"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_confirm_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一按钮"/>
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_confirm_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="二按钮"/>
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_confirm_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="三按钮"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="确认弹窗"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="#bbbbbb"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="单选弹窗"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

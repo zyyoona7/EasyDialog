@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_ios_text_blue">#157efb</color>
+    <color name="color_ios_text_red">#fc3d39</color>
+    <color name="color_ios_divider">#dadade</color>
+    <color name="color_ios_action_sheet_text">#66000000</color>
+    <color name="color_ios_alert_text">#000000</color>
+    <color name="color_alert_button_press">#EAEAEA</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_transparent">#00FFFFFF</color>
+</resources>
