@@ -68,12 +68,6 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/cb_other_transparent_bg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="背景透明"/>
-
-            <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/cb_other_full_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

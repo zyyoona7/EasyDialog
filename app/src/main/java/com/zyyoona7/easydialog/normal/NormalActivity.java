@@ -3,8 +3,6 @@ package com.zyyoona7.easydialog.normal;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.zyyoona7.easydialog.R;
-import com.zyyoona7.lib.other.NormalDialog;
+import com.zyyoona7.lib.impl.NormalDialog;
 
 public class NormalActivity extends AppCompatActivity {
 
@@ -121,7 +119,6 @@ public class NormalActivity extends AppCompatActivity {
                 .setFragmentTag(TAG_CONFIRM_DIALOG)
                 .setGravity(getBaseGravity())
                 .setWidth(mOtherFullCb.isChecked() ? ViewGroup.LayoutParams.MATCH_PARENT : 0)
-                .setWindowBackground(mTransparentCb.isChecked() ? new ColorDrawable(Color.TRANSPARENT) : null)
                 .setDialogListener(mConfirmDialogListener)
                 .show(getSupportFragmentManager());
     }
@@ -198,7 +195,6 @@ public class NormalActivity extends AppCompatActivity {
                 .setFragmentTag(TAG_SINGLE_DIALOG)
                 .setGravity(getBaseGravity())
                 .setWidth(mOtherFullCb.isChecked() ? ViewGroup.LayoutParams.MATCH_PARENT : 0)
-                .setWindowBackground(mTransparentCb.isChecked() ? new ColorDrawable(Color.TRANSPARENT) : null)
                 .setDialogListener(mSingleDialogListener)
                 .show(getSupportFragmentManager());
     }

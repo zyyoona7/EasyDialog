@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.zyyoona7.custom.ActionSheetDialog;
 import com.zyyoona7.easydialog.R;
-import com.zyyoona7.lib.other.EasyDialog;
 
 public class IOSActivity extends AppCompatActivity {
 
