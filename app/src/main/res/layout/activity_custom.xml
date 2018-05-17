@@ -7,4 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".custom.CustomActivity">
 
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹"
+        android:id="@+id/btn_google_pd"/>
 </android.support.constraint.ConstraintLayout>

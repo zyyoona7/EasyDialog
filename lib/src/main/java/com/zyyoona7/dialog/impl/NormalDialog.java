@@ -1,8 +1,8 @@
-package com.zyyoona7.lib.impl;
+package com.zyyoona7.dialog.impl;
 
 import android.support.v7.app.AlertDialog;
 
-import com.zyyoona7.lib.base.BaseNormalDialog;
+import com.zyyoona7.dialog.base.BaseNormalDialog;
 
 public class NormalDialog extends BaseNormalDialog<NormalDialog> {
 

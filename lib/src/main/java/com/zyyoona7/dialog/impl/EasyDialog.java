@@ -1,8 +1,8 @@
-package com.zyyoona7.lib.impl;
+package com.zyyoona7.dialog.impl;
 
 import android.view.View;
 
-import com.zyyoona7.lib.base.BaseEasyDialog;
+import com.zyyoona7.dialog.base.BaseEasyDialog;
 
 public class EasyDialog extends BaseEasyDialog<EasyDialog> {
 

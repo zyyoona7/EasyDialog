@@ -31,5 +31,6 @@ dependencies {
     implementation 'com.blankj:utilcode:1.15.0'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     implementation project(':custom')
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
 
 }

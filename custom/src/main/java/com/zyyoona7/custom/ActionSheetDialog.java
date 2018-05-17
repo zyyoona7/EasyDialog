@@ -13,9 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.zyyoona7.lib.base.BaseEasyDialog;
+import com.zyyoona7.dialog.base.BaseEasyDialog;
 
 import java.util.Arrays;
 import java.util.List;
@@ -180,8 +182,8 @@ public class ActionSheetDialog extends BaseEasyDialog<ActionSheetDialog> {
         }
     }
 
-    public ActionSheetDialog setItemClickListener(DialogInterface.OnClickListener listener){
-        this.mOnClickListener=listener;
+    public ActionSheetDialog setItemClickListener(DialogInterface.OnClickListener listener) {
+        this.mOnClickListener = listener;
         return this;
     }
 }

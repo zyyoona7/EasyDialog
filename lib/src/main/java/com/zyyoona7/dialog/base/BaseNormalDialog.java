@@ -1,7 +1,6 @@
-package com.zyyoona7.lib.base;
+package com.zyyoona7.dialog.base;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;

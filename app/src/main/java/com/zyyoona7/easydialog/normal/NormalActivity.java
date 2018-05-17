@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.zyyoona7.easydialog.R;
-import com.zyyoona7.lib.impl.NormalDialog;
+import com.zyyoona7.dialog.impl.NormalDialog;
 
 public class NormalActivity extends AppCompatActivity {
 
@@ -27,7 +27,6 @@ public class NormalActivity extends AppCompatActivity {
     private AppCompatRadioButton mBottomRb;
 
     private AppCompatCheckBox mOtherFullCb;
-    private AppCompatCheckBox mTransparentCb;
 
     private AppCompatCheckBox mConfirmTitleCb;
     private AppCompatRadioButton mConfirmOneRb;
@@ -75,7 +74,6 @@ public class NormalActivity extends AppCompatActivity {
         mCenterRb = findViewById(R.id.rb_base_center);
         mBottomRb = findViewById(R.id.rb_base_bottom);
 
-        mTransparentCb = findViewById(R.id.cb_other_transparent_bg);
         mOtherFullCb = findViewById(R.id.cb_other_full_width);
 
         mConfirmTitleCb = findViewById(R.id.cb_confirm_title);

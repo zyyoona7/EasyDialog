@@ -1,4 +1,4 @@
-package com.zyyoona7.lib.base;
+package com.zyyoona7.dialog.base;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 
 /**
  * 和 Fragment 用法类似的 DialogFragment

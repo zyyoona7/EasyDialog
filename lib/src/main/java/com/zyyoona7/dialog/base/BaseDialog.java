@@ -1,4 +1,4 @@
-package com.zyyoona7.lib.base;
+package com.zyyoona7.dialog.base;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.zyyoona7.lib.R;
+import com.zyyoona7.dialog.R;
+
 
 public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFragment {
 
