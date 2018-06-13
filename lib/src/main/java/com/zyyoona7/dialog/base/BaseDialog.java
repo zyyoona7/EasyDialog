@@ -52,22 +52,12 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
 
     protected int mGravity = Gravity.CENTER;
 
-    protected FragmentActivity mActivity;
-
     protected DialogInterface.OnCancelListener mOnCancelListener;
     protected DialogInterface.OnDismissListener mOnDismissListener;
 
     protected T self() {
         //noinspection unchecked
         return (T) this;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentActivity) {
-            mActivity = (FragmentActivity) context;
-        }
     }
 
     @Override
@@ -173,6 +163,13 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
         if (mOnDismissListener != null) {
             mOnDismissListener.onDismiss(dialog);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        mOnCancelListener=null;
+        mOnDismissListener=null;
+        super.onDestroy();
     }
 
     /**

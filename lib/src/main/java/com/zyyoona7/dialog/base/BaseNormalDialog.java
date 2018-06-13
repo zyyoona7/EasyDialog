@@ -15,9 +15,13 @@ public abstract class BaseNormalDialog<T extends BaseNormalDialog> extends BaseD
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        initDialog(builder);
-        return builder.create();
+        if (getActivity() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            initDialog(builder);
+            return builder.create();
+        } else {
+            return super.onCreateDialog(savedInstanceState);
+        }
     }
 
     /**

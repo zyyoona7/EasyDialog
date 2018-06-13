@@ -19,6 +19,12 @@ public class NormalDialog extends BaseNormalDialog<NormalDialog> {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        mDialogListener=null;
+        super.onDestroy();
+    }
+
     /**
      * 设置 Dialog 监听器
      *

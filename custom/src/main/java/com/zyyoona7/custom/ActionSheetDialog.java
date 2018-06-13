@@ -13,8 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zyyoona7.dialog.base.BaseEasyDialog;
@@ -54,15 +52,18 @@ public class ActionSheetDialog extends BaseEasyDialog<ActionSheetDialog> {
 
     @Override
     protected void initViews(View view) {
+        if (getActivity() == null) {
+            return;
+        }
         mTitleTv = view.findViewById(R.id.tv_action_sheet_title);
         mMsgTv = view.findViewById(R.id.tv_action_sheet_msg);
         mTitleDividerV = view.findViewById(R.id.v_action_sheet_title_divider);
         RecyclerView itemRv = view.findViewById(R.id.rv_action_sheet_item);
         mCancelTv = view.findViewById(R.id.tv_action_sheet_cancel);
 
-        itemRv.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL);
-        Drawable dividerDrawable = ContextCompat.getDrawable(mActivity, R.drawable.shape_divider);
+        itemRv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL);
+        Drawable dividerDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.shape_divider);
         if (dividerDrawable != null) {
             itemDecoration.setDrawable(dividerDrawable);
         }
@@ -175,9 +176,9 @@ public class ActionSheetDialog extends BaseEasyDialog<ActionSheetDialog> {
             mItemAdapter.notifyDataSetChanged();
         }
 
-        if (isCancelHighlight) {
+        if (isCancelHighlight && getActivity() != null) {
             if (mCancelTv != null) {
-                mCancelTv.setTextColor(ContextCompat.getColor(mActivity, R.color.color_ios_text_red));
+                mCancelTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_ios_text_red));
             }
         }
     }
