@@ -19,12 +19,6 @@ public class EasyDialog extends BaseEasyDialog<EasyDialog> {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        mViewListener = null;
-        super.onDestroy();
-    }
-
     /**
      * 设置初始化 View 监听器
      *

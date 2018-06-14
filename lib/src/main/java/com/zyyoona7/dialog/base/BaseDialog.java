@@ -165,13 +165,6 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
         }
     }
 
-    @Override
-    public void onDestroy() {
-        mOnCancelListener=null;
-        mOnDismissListener=null;
-        super.onDestroy();
-    }
-
     /**
      * 判断是否显示
      *
