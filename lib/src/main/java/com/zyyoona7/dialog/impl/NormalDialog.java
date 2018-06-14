@@ -30,6 +30,15 @@ public class NormalDialog extends BaseNormalDialog<NormalDialog> {
         return this;
     }
 
+    /**
+     * 清除匿名内部类 callback 对外部类的引用，避免可能导致的内存泄漏
+     */
+    @Override
+    public void clearRefOnDestroy() {
+        super.clearRefOnDestroy();
+        setDialogListener(null);
+    }
+
     public interface DialogListener {
 
         void initDialog(AlertDialog.Builder builder);

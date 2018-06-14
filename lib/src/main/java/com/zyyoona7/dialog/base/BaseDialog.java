@@ -55,6 +55,22 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
     protected DialogInterface.OnCancelListener mOnCancelListener;
     protected DialogInterface.OnDismissListener mOnDismissListener;
 
+    protected FragmentActivity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof FragmentActivity) {
+            mActivity = (FragmentActivity) context;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        mActivity = null;
+        super.onDestroy();
+    }
+
     protected T self() {
         //noinspection unchecked
         return (T) this;
@@ -320,5 +336,15 @@ public abstract class BaseDialog<T extends BaseDialog> extends AppCompatDialogFr
     public T setDialogCancelable(boolean cancelable) {
         setCancelable(cancelable);
         return self();
+    }
+
+    /**
+     * 清除匿名内部类 callback 对外部类的引用，避免可能导致的内存泄漏
+     */
+    public void clearRefOnDestroy() {
+        //清除 onDismissListener 引用
+        setOnDismissListener(null);
+        //清除 onCancelListener 引用
+        setOnCancelListener(null);
     }
 }
