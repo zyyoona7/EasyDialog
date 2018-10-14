@@ -63,16 +63,41 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
                         //自己业务处理，用true拦截
                         boolean consume = isInterceptBackEvent();
                         if (consume) {
-                            onBackPress();
-                            if (mDimObjectAnimator != null) {
-                                mDimObjectAnimator.reverse();
-                            }
+                            dismissWithAnimBackPress();
                         }
                         return consume;
                     }
                     return false;
                 }
             });
+        }
+    }
+
+    /**
+     * 带 dim 动画的 dismiss 方法 并执行 onBackPress方法
+     */
+    public void dismissWithAnimBackPress() {
+        dismissWithAnim(true);
+    }
+
+    /**
+     * 带 dim 动画的 dismiss 方法
+     */
+    public void dismissWithAnim() {
+        dismissWithAnim(false);
+    }
+
+    /**
+     * 带 dim 动画的 dismiss 方法
+     *
+     * @param withBackPress 是否执行onBackPress方法
+     */
+    protected void dismissWithAnim(boolean withBackPress) {
+        if (withBackPress) {
+            onBackPress();
+        }
+        if (mDimObjectAnimator != null) {
+            mDimObjectAnimator.reverse();
         }
     }
 
@@ -214,6 +239,14 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
         return self();
     }
 
+    /**
+     * 获取淡入淡出动画持续时间
+     *
+     * @return 淡入淡出动画持续时间
+     */
+    public int getDimAnimDuration() {
+        return mDimAnimDuration;
+    }
 
     /**
      * 是否拦截返回按钮事件
