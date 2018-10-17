@@ -3,6 +3,7 @@ package com.zyyoona7.dialog.base;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -16,11 +17,14 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroupOverlay;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.zyyoona7.dialog.dialog.OutsideRealDialog;
 
 /**
  * 可以改变 dim 颜色并支持 dim 淡入淡出动画的的Dialog
@@ -45,10 +49,35 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
     public BaseDimDialog() {
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        return new OutsideRealDialog(getContext(), getTheme());
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        interceptTouchOutside();
         interceptBackEvent();
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    /**
+     * 拦截touch outside 事件
+     */
+    private void interceptTouchOutside() {
+        if (mIsCancelOnTouchOutside && getDialog() != null && getDialog() instanceof OutsideRealDialog) {
+            ((OutsideRealDialog) getDialog()).setOnTouchOutsideListener(
+                    new OutsideRealDialog.OnTouchOutsideListener() {
+                        @Override
+                        public boolean onTouchOutside(OutsideRealDialog dialog, MotionEvent event) {
+                            dismissWithAnim();
+                            BaseDimDialog.this.onTouchOutside();
+                            ((OutsideRealDialog) getDialog()).setOnTouchOutsideListener(null);
+                            return true;
+                        }
+                    });
+        }
     }
 
     /**
@@ -64,6 +93,8 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
                         boolean consume = isInterceptBackEvent();
                         if (consume) {
                             dismissWithAnimBackPress();
+                            //如果消费事件，dismiss后移除监听器
+                            getDialog().setOnKeyListener(null);
                         }
                         return consume;
                     }
@@ -261,6 +292,13 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
      * 返回键事件回调
      */
     protected void onBackPress() {
+
+    }
+
+    /**
+     * 触摸outside回调
+     */
+    protected void onTouchOutside() {
 
     }
 }
