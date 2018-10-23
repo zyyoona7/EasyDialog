@@ -46,6 +46,8 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
     private ObjectAnimator mDimObjectAnimator;
     private int mDimAnimDuration = DEFAULT_DIM_DURATION;
 
+    private boolean mIsAnimatorReverse = false;
+
     public BaseDimDialog() {
     }
 
@@ -128,6 +130,7 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
             onBackPress();
         }
         if (mDimObjectAnimator != null) {
+            mIsAnimatorReverse = true;
             mDimObjectAnimator.reverse();
         }
     }
@@ -180,6 +183,7 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
         if (mDimObjectAnimator.isRunning()) {
             mDimObjectAnimator.cancel();
         }
+        mIsAnimatorReverse = false;
         mDimObjectAnimator.start();
     }
 
@@ -193,10 +197,11 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
             mDimObjectAnimator = ObjectAnimator.ofInt(mDimDrawable, "alpha",
                     0, (int) (255 * dimAmount))
                     .setDuration(mDimAnimDuration);
+
             mDimObjectAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
-                public void onAnimationEnd(Animator animation, boolean isReverse) {
-                    if (isReverse) {
+                public void onAnimationEnd(Animator animation) {
+                    if (mIsAnimatorReverse) {
                         mDimObjectAnimator.removeAllListeners();
                         dismiss();
                     }
