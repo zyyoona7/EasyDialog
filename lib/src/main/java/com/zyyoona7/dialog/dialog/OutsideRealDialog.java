@@ -68,6 +68,12 @@ public class OutsideRealDialog extends AppCompatDialog {
         this.mOnTouchOutsideListener = listener;
     }
 
+    @Override
+    public void onDetachedFromWindow() {
+        this.mOnTouchOutsideListener=null;
+        super.onDetachedFromWindow();
+    }
+
     public interface OnTouchOutsideListener {
 
         boolean onTouchOutside(OutsideRealDialog dialog, MotionEvent event);

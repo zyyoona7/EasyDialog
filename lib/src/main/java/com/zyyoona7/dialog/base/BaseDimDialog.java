@@ -151,6 +151,17 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
     }
 
     @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (mIsCancelOnTouchOutside && getDialog() != null && getDialog() instanceof OutsideRealDialog) {
+            ((OutsideRealDialog) getDialog()).setOnTouchOutsideListener(null);
+        }
+        if (getDialog() != null) {
+            getDialog().setOnKeyListener(null);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             //清除资源
