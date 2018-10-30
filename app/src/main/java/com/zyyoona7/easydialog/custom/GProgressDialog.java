@@ -1,5 +1,6 @@
 package com.zyyoona7.easydialog.custom;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -7,10 +8,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.gyf.barlibrary.ImmersionBar;
+import com.zyyoona7.dialog.base.BaseDimDialog;
 import com.zyyoona7.easydialog.R;
 import com.zyyoona7.dialog.base.BaseEasyDialog;
 
-public class GProgressDialog extends BaseEasyDialog<GProgressDialog> {
+public class GProgressDialog extends BaseDimDialog<GProgressDialog> {
 
     ImmersionBar mImmersionBar;
 
@@ -23,7 +25,9 @@ public class GProgressDialog extends BaseEasyDialog<GProgressDialog> {
         super.onCreate(savedInstanceState);
         setLayoutRes(R.layout.layout_google_progress)
                 .setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
-                .setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+                .setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
+        .setDimColor(Color.BLACK)
+        .setDimAmount(0.7f);
     }
 
     @Override

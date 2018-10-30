@@ -36,6 +36,9 @@ import com.zyyoona7.dialog.dialog.OutsideRealDialog;
 public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDialog<T> {
 
     private static final int DEFAULT_DIM_DURATION = 200;
+    protected static final String KEY_DIM_COLOR_AMOUNT = "keyDimColorAmount";
+    protected static final String KEY_DIM_COLOR_RES = "keyDimColorRes";
+    protected static final String KEY_DIM_COLOR = "keyDimColor";
 
     @ColorInt
     private int mDimColor = -1;
@@ -48,7 +51,28 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
 
     private boolean mIsAnimatorReverse = false;
 
+    private boolean mIsFirstIn = true;
+
     public BaseDimDialog() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            mDimColorRes = savedInstanceState.getInt(KEY_DIM_COLOR_RES, 0);
+            mDimColor = savedInstanceState.getInt(KEY_DIM_COLOR, -1);
+            mDimColorAmount = savedInstanceState.getFloat(KEY_DIM_COLOR_AMOUNT, 0.9f);
+        }
+        this.mIsFirstIn = true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt(KEY_DIM_COLOR_RES, mDimColorRes);
+        outState.putInt(KEY_DIM_COLOR, mDimColor);
+        outState.putFloat(KEY_DIM_COLOR_AMOUNT, mDimColorAmount);
+        super.onSaveInstanceState(outState);
     }
 
     @NonNull
@@ -187,7 +211,6 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
     protected void applyDim(@NonNull ViewGroup parent, int color, float dimAmount) {
         mDimDrawable = new ColorDrawable(color);
         mDimDrawable.setBounds(0, 0, parent.getWidth(), parent.getHeight());
-
         ViewGroupOverlay overlay = parent.getOverlay();
         overlay.add(mDimDrawable);
         initDimAnimator(dimAmount);
@@ -195,7 +218,12 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
             mDimObjectAnimator.cancel();
         }
         mIsAnimatorReverse = false;
-        mDimObjectAnimator.start();
+        if (mIsFirstIn) {
+            mDimObjectAnimator.start();
+            mIsFirstIn = false;
+        } else {
+            mDimDrawable.setAlpha((int) (mDimColorAmount * 255));
+        }
     }
 
     /**
