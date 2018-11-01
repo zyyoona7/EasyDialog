@@ -73,6 +73,7 @@ public class OutsideRealDialog extends AppCompatDialog {
         this.mOnTouchOutsideListener=null;
         setOnCancelListener(null);
         setOnDismissListener(null);
+        setOnKeyListener(null);
         super.onDetachedFromWindow();
     }
 
