@@ -1,6 +1,8 @@
 package com.zyyoona7.easydialog.custom;
 
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -10,7 +12,6 @@ import android.widget.FrameLayout;
 import com.gyf.barlibrary.ImmersionBar;
 import com.zyyoona7.dialog.base.BaseDimDialog;
 import com.zyyoona7.easydialog.R;
-import com.zyyoona7.dialog.base.BaseEasyDialog;
 
 public class GProgressDialog extends BaseDimDialog<GProgressDialog> {
 
@@ -58,5 +59,16 @@ public class GProgressDialog extends BaseDimDialog<GProgressDialog> {
     protected void initImmersionBar() {
         mImmersionBar = ImmersionBar.with(this, getDialog());
         mImmersionBar.init();
+    }
+
+    @Override
+    protected boolean onDrawableInit(GradientDrawable dimDrawable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            dimDrawable.setColors(new int[]{Color.parseColor("#37131d"),
+                    Color.parseColor("#211f48")});
+            return true;
+        }else {
+            return false;
+        }
     }
 }

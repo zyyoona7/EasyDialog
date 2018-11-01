@@ -5,8 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -45,7 +44,7 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
     @ColorRes
     private int mDimColorRes = 0;
     private float mDimColorAmount = 0.9f;
-    private Drawable mDimDrawable;
+    private GradientDrawable mDimDrawable;
     private ObjectAnimator mDimObjectAnimator;
     private int mDimAnimDuration = DEFAULT_DIM_DURATION;
 
@@ -209,7 +208,10 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     protected void applyDim(@NonNull ViewGroup parent, int color, float dimAmount) {
-        mDimDrawable = new ColorDrawable(color);
+        mDimDrawable = new GradientDrawable();
+        if (!onDrawableInit(mDimDrawable)) {
+            mDimDrawable.setColor(color);
+        }
         mDimDrawable.setBounds(0, 0, parent.getWidth(), parent.getHeight());
         ViewGroupOverlay overlay = parent.getOverlay();
         overlay.add(mDimDrawable);
@@ -344,5 +346,15 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
      */
     protected void onTouchOutside() {
 
+    }
+
+    /**
+     * drawable init
+     *
+     * @param dimDrawable GradientDrawable
+     * @return 是否自行设置Drawable
+     */
+    protected boolean onDrawableInit(GradientDrawable dimDrawable) {
+        return false;
     }
 }
