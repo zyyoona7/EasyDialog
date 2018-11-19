@@ -109,7 +109,7 @@ public abstract class BaseDimDialog<T extends BaseDimDialog> extends BaseEasyDia
      * 拦截返回按钮事件
      */
     private void interceptBackEvent() {
-        if (isInterceptBackEvent() && getDialog() != null) {
+        if (isCancelable() && isInterceptBackEvent() && getDialog() != null) {
             getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
                 @Override
                 public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
